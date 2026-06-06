@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社Medical Vantage｜あなたの挑戦を、キャリアに変える。</title>
+<meta name="description" content="株式会社Medical Vantageは、システム開発・Web制作・SESの3事業を展開するITベンチャー。若手・未経験者を積極採用し、資格取得サポートと成長環境であなたのキャリアアップを全力で支援します。">
+<style>
+  :root{
+    --navy-900:#24386e;
+    --navy-800:#2d4486;
+    --navy-700:#37509b;
+    --navy-600:#4661ad;
+    --cyan:#28e0d0;
+    --cyan-2:#5cc6ff;
+    --orange:#ff9a4d;
+    --orange-2:#ff6f3d;
+    --white:#ffffff;
+    --gray:#d4ddf3;
+    --glass:rgba(255,255,255,0.10);
+    --glass-bd:rgba(255,255,255,0.20);
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+    background:var(--navy-900);
+    color:var(--white);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+  .accent{color:var(--cyan);}
+  .grad-text{
+    background:linear-gradient(100deg,var(--cyan) 0%,var(--cyan-2) 60%,#a78bfa 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  /* ===== Nav ===== */
+  header{
+    position:fixed;top:0;left:0;width:100%;z-index:100;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    background:rgba(36,56,110,0.70);
+    border-bottom:1px solid rgba(255,255,255,0.10);
+    transition:background .3s;
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .logo{font-weight:800;font-size:20px;letter-spacing:.5px;}
+  .logo span{font-weight:400;font-size:13px;color:var(--gray);display:block;letter-spacing:2px;margin-top:-4px;}
+  .nav-links{display:flex;gap:30px;align-items:center;font-size:14px;}
+  .nav-links a{color:var(--gray);transition:color .2s;}
+  .nav-links a:hover{color:var(--white);}
+  .nav-cta{
+    background:linear-gradient(100deg,var(--orange),var(--orange-2));
+    color:#fff;font-weight:700;padding:9px 18px;border-radius:999px;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,128,60,.45);}
+  .menu-btn{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;padding:160px 0 110px;
+    background:
+      radial-gradient(1200px 600px at 80% -10%,rgba(56,189,248,.18),transparent 60%),
+      radial-gradient(900px 500px at 0% 30%,rgba(124,58,237,.16),transparent 55%),
+      linear-gradient(180deg,var(--navy-800),var(--navy-900));
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80&auto=format&fit=crop') center/cover no-repeat;
+    opacity:.10;mix-blend-mode:luminosity;
+  }
+  .hero-grid{position:relative;display:flex;justify-content:center;text-align:center;}
+  .hero-main{max-width:780px;}
+  .hero h1{font-size:50px;line-height:1.35;font-weight:800;letter-spacing:.5px;}
+  .hero .sub{margin:26px auto 0;font-size:17px;color:var(--gray);max-width:600px;}
+  .tagpill{
+    display:inline-block;font-size:13px;color:var(--cyan);
+    border:1px solid rgba(34,211,238,.4);border-radius:999px;
+    padding:6px 16px;margin-bottom:24px;background:rgba(34,211,238,.07);
+  }
+  .hero-cards{display:flex;flex-direction:column;gap:16px;}
+  .hcard{
+    background:var(--glass);border:1px solid var(--glass-bd);border-radius:var(--radius);
+    padding:20px 22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    transition:transform .25s,border-color .25s;
+  }
+  .hcard:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.5);}
+  .hcard h3{font-size:17px;display:flex;align-items:center;gap:10px;}
+  .hcard p{font-size:13px;color:var(--gray);margin-top:4px;}
+  .hcard .ic{font-size:22px;}
+
+  /* ===== Section base ===== */
+  section{padding:96px 0;position:relative;}
+  .sec-label{font-size:13px;letter-spacing:3px;color:var(--cyan);font-weight:700;text-transform:uppercase;}
+  .sec-title{font-size:34px;font-weight:800;margin-top:10px;line-height:1.4;}
+  .sec-head{margin-bottom:54px;}
+  .sec-head.center{text-align:center;}
+
+  /* ===== Value ===== */
+  .value{background:linear-gradient(180deg,var(--navy-900),var(--navy-800));}
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .vcard{
+    position:relative;overflow:hidden;border-radius:var(--radius);padding:40px 30px 34px;
+    background:linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04));
+    border:1px solid var(--glass-bd);
+    box-shadow:0 22px 44px -14px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    transition:transform .3s,box-shadow .3s;
+  }
+  .vcard::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--cyan),var(--orange));}
+  .vcard:hover{transform:translateY(-10px);box-shadow:0 34px 64px -16px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.3);}
+  .vcard .num{font-size:14px;color:var(--orange);font-weight:800;letter-spacing:2px;}
+  .vcard h3{font-size:22px;margin:12px 0 10px;}
+  .vcard p{font-size:14px;color:var(--gray);}
+
+  /* ===== About ===== */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-lead{font-size:26px;font-weight:700;line-height:1.6;margin-bottom:20px;}
+  .about p{color:var(--gray);}
+  .info-table{width:100%;border-collapse:collapse;background:var(--glass);border-radius:var(--radius);overflow:hidden;border:1px solid var(--glass-bd);}
+  .info-table th,.info-table td{text-align:left;padding:16px 20px;font-size:14px;border-bottom:1px solid rgba(255,255,255,.07);}
+  .info-table th{color:var(--cyan);width:38%;font-weight:600;white-space:nowrap;}
+  .info-table tr:last-child th,.info-table tr:last-child td{border-bottom:none;}
+
+  /* ===== Business ===== */
+  .biz{background:linear-gradient(180deg,var(--navy-800),var(--navy-900));}
+  .biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .bcard{
+    background:var(--glass);border:1px solid var(--glass-bd);border-radius:var(--radius);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    transition:transform .25s,border-color .25s;position:relative;overflow:hidden;
+  }
+  .bcard:hover{transform:translateY(-6px);border-color:rgba(34,211,238,.45);}
+  .bcard .ph{height:210px;overflow:hidden;}
+  .bcard .ph img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s;}
+  .bcard:hover .ph img{transform:scale(1.06);}
+  .bcard .bbody{padding:26px 28px 30px;}
+  .bcard h3{font-size:20px;margin-bottom:12px;}
+  .bcard p{font-size:14px;color:var(--gray);}
+
+  /* ===== Reasons ===== */
+  .reasons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+  .rcard{
+    background:var(--glass);border:1px solid var(--glass-bd);border-radius:var(--radius);overflow:hidden;
+    transition:transform .25s;
+  }
+  .rcard:hover{transform:translateY(-6px);}
+  .rcard .ph{height:200px;overflow:hidden;position:relative;}
+  .rcard .ph img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s;}
+  .rcard:hover .ph img{transform:scale(1.06);}
+  .rcard .body{padding:24px 26px;}
+  .rcard .num{font-size:13px;color:var(--orange);font-weight:800;letter-spacing:2px;}
+  .rcard h3{font-size:20px;margin:6px 0 10px;}
+  .rcard p{font-size:14px;color:var(--gray);}
+
+  /* ===== Recruit ===== */
+  .recruit{background:linear-gradient(180deg,var(--navy-900),var(--navy-800));}
+  .jobs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;}
+  .job{
+    position:relative;overflow:hidden;border-radius:var(--radius);padding:34px 30px;
+    background:linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04));
+    border:1px solid var(--glass-bd);
+    box-shadow:0 22px 44px -14px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    transition:transform .3s,box-shadow .3s;
+  }
+  .job::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--cyan),var(--orange));}
+  .job:hover{transform:translateY(-8px);box-shadow:0 34px 64px -16px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.3);}
+  .job h3{font-size:20px;margin-bottom:8px;}
+  .job .pay{font-size:28px;font-weight:800;}
+  .job .pay span{font-size:14px;color:var(--gray);font-weight:400;}
+  .job ul{list-style:none;margin-top:14px;font-size:13px;color:var(--gray);}
+  .job ul li{padding-left:18px;position:relative;margin-bottom:4px;}
+  .job ul li::before{content:"▸";position:absolute;left:0;color:var(--cyan);}
+  .benefits{
+    position:relative;overflow:hidden;border-radius:var(--radius);padding:36px 32px;
+    background:linear-gradient(160deg,rgba(255,255,255,0.13),rgba(255,255,255,0.03));
+    border:1px solid var(--glass-bd);
+    box-shadow:0 22px 44px -14px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.18);
+  }
+  .benefits::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--cyan),var(--orange));}
+  .benefits h3{font-size:18px;margin-bottom:16px;}
+  .benefits .b-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;font-size:14px;color:var(--gray);}
+  .benefits .b-grid div{padding-left:20px;position:relative;}
+  .benefits .b-grid div::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700;}
+
+  .welcome{
+    margin-top:40px;text-align:center;border-radius:var(--radius);padding:46px 24px;
+    background:linear-gradient(120deg,rgba(34,211,238,.12),rgba(124,58,237,.12));
+    border:1px solid rgba(34,211,238,.25);
+  }
+  .welcome h3{font-size:26px;margin-bottom:10px;}
+  .welcome p{color:var(--gray);max-width:620px;margin:0 auto;}
+
+  /* ===== Banner ===== */
+  .banner{position:relative;min-height:420px;display:flex;align-items:center;overflow:hidden;}
+  .banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;}
+  .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,13,36,.92) 0%,rgba(7,13,36,.6) 50%,rgba(7,13,36,.3) 100%);}
+  .banner-in{position:relative;z-index:2;}
+  .banner h2{font-size:40px;font-weight:800;line-height:1.4;}
+  .banner p{margin-top:16px;color:#d7def5;max-width:480px;}
+
+  /* ===== FAQ ===== */
+  .faq-list{max-width:820px;margin:0 auto;}
+  .faq-item{
+    background:var(--glass);border:1px solid var(--glass-bd);border-radius:14px;margin-bottom:14px;overflow:hidden;
+  }
+  .faq-q{padding:20px 24px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:15px;}
+  .faq-q .mark{color:var(--cyan);font-size:22px;transition:transform .3s;flex-shrink:0;}
+  .faq-item.open .faq-q .mark{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-a p{padding:0 24px 20px;color:var(--gray);font-size:14px;}
+
+  /* ===== Contact ===== */
+  .contact{background:linear-gradient(180deg,var(--navy-800),var(--navy-900));text-align:center;}
+  .contact-card{
+    max-width:620px;margin:0 auto;background:var(--glass);border:1px solid rgba(34,211,238,.3);
+    border-radius:var(--radius);padding:50px 36px;backdrop-filter:blur(10px);
+  }
+  .contact-card h3{font-size:24px;margin-bottom:10px;}
+  .contact-card p{color:var(--gray);font-size:14px;margin-bottom:26px;}
+  .mail-btn{
+    display:inline-block;background:linear-gradient(100deg,var(--orange),var(--orange-2));
+    color:#fff;font-weight:800;font-size:18px;padding:16px 40px;border-radius:999px;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .mail-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,128,60,.45);}
+
+  /* ===== Footer ===== */
+  footer{background:var(--navy-900);border-top:1px solid rgba(255,255,255,.07);padding:54px 0 30px;}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:30px;}
+  .foot-logo{font-weight:800;font-size:22px;}
+  .foot-logo span{display:block;font-size:12px;color:var(--gray);letter-spacing:2px;font-weight:400;}
+  .foot-info{font-size:13px;color:var(--gray);line-height:2;}
+  .copy{text-align:center;font-size:12px;color:#5e6788;border-top:1px solid rgba(255,255,255,.06);padding-top:24px;}
+
+  /* ===== Reveal animation ===== */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ===== Responsive ===== */
+  @media(max-width:860px){
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+    .hero{padding:130px 0 80px;}
+    .hero-grid{grid-template-columns:1fr;gap:36px;}
+    .hero h1{font-size:34px;}
+    .values,.biz-grid{grid-template-columns:1fr;}
+    .reasons-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;gap:34px;}
+    .jobs{grid-template-columns:1fr;}
+    .benefits .b-grid{grid-template-columns:1fr;}
+    .sec-title{font-size:27px;}
+    .banner h2{font-size:30px;}
+    .banner::after{background:linear-gradient(180deg,rgba(7,13,36,.5) 0%,rgba(7,13,36,.9) 100%);}
+    section{padding:70px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Nav ===== -->
+<header>
+  <div class="container nav">
+    <a href="#top" class="logo">株式会社Medical Vantage</a>
+    <nav class="nav-links">
+      <a href="#value">私たちの価値</a>
+      <a href="#about">会社概要</a>
+      <a href="#business">事業内容</a>
+      <a href="#recruit">採用情報</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">採用お問い合わせ</a>
+    </nav>
+    <button class="menu-btn" aria-label="menu" onclick="document.querySelector('.nav-links').style.display = (getComputedStyle(document.querySelector('.nav-links')).display==='none'?'flex':'none')">≡</button>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-main">
+      <h1>テクノロジーで、<br><span class="grad-text">人の可能性を前へ。</span></h1>
+      <p class="sub">株式会社Medical Vantageは、システム開発・Web制作・SESの3事業で、テクノロジーの力を社会へ届けるITベンチャーです。若者の手で次の時代をつくる。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Value ===== -->
+<section class="value" id="value">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="sec-label">Our Value</p>
+      <h2 class="sec-title">技術で課題を解く。<br>スピードで市場を変える。<br>仲間と未来を創る。</h2>
+    </div>
+    <div class="values">
+      <div class="vcard reveal"><div class="num">VALUE 01</div><h3>技術で、解く。</h3><p>表面的な要望ではなく、その先にある本質的な課題に向き合います。確かな技術力で最適な解を設計し、実装まで一貫してやり遂げる。つくることで価値を証明し、クライアントの事業成長に貢献します。</p></div>
+      <div class="vcard reveal"><div class="num">VALUE 02</div><h3>速さで、変える。</h3><p>変化の速い市場で勝ち抜く力は、スピードに宿ります。意思決定も、挑戦も、改善も速く。小さく試し、素早く形にするサイクルを回し続けることで、私たち自身が市場の変化を生み出す側であり続けます。</p></div>
+      <div class="vcard reveal"><div class="num">VALUE 03</div><h3>仲間と、創る。</h3><p>過去の経験以上に、これから伸びようとする意志を尊重します。知見を惜しまず共有し、互いに高め合う。一人では届かない成果も、チームでなら超えていける。そんな文化を組織の基盤として大切にします。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Business ===== -->
+<section class="biz" id="business">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="sec-label">Business</p>
+      <h2 class="sec-title">事業内容</h2>
+    </div>
+    <div class="biz-grid">
+      <div class="bcard reveal">
+        <div class="ph"><img src="biz1.jpg" alt="システム開発"></div>
+        <div class="bbody">
+          <h3>システム開発事業</h3>
+          <p>AIを駆使したシステム・ツール・アプリ・ゲームの開発を行います。企業のDX化を支援し、最新技術で業務効率化と新たな価値創造を実現します。</p>
+        </div>
+      </div>
+      <div class="bcard reveal">
+        <div class="ph"><img src="biz2.jpg" alt="Web制作"></div>
+        <div class="bbody">
+          <h3>Web制作事業</h3>
+          <p>戦略設計からデザイン、実装までを一貫して提供。コーポレートサイトやLPなど、成果につながるWeb制作で企業のブランドと集客を支えます。</p>
+        </div>
+      </div>
+      <div class="bcard reveal">
+        <div class="ph"><img src="biz3.jpg" alt="SES"></div>
+        <div class="bbody">
+          <h3>SES事業</h3>
+          <p>エンジニアのスキルと志向に合わせた案件をご提供。一人ひとりのキャリアに伴走し、現場での成長と挑戦をしっかりサポートします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reasons ===== -->
+<section class="reasons">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="sec-label">Why Medical Vantage</p>
+      <h2 class="sec-title">選ばれる4つの理由</h2>
+    </div>
+    <div class="reasons-grid">
+      <div class="rcard reveal">
+        <div class="ph"><img src="reason1.jpg" alt="若手社員"></div>
+        <div class="body"><div class="num">REASON 01</div><h3>若手・未経験者を積極採用</h3><p>大切なのは経歴より、これからの伸びしろ。ポテンシャルを重視し、未経験からエンジニアを目指す方を歓迎します。</p></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="ph"><img src="reason2.jpg" alt="学習サポート"></div>
+        <div class="body"><div class="num">REASON 02</div><h3>資格取得サポートが充実</h3><p>受験費用の補助や学習環境を整備。働きながらスキルと資格を着実に積み上げられる仕組みがあります。</p></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="ph"><img src="reason3.jpg" alt="成長環境"></div>
+        <div class="body"><div class="num">REASON 03</div><h3>ベンチャーならではの成長環境</h3><p>裁量が大きく、挑戦の機会が豊富。あなたの提案や行動が、そのまま会社の成長につながります。</p></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="ph"><img src="reason4.jpg" alt="キャリアアップ"></div>
+        <div class="body"><div class="num">REASON 04</div><h3>キャリアアップを全力サポート</h3><p>定期的な面談とフィードバックで、一人ひとりのキャリアに伴走。なりたい姿に向かって着実に前進できます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Banner ===== -->
+<section class="banner">
+  <img src="banner.jpg" alt="チーム">
+  <div class="container banner-in reveal">
+    <h2>共に、前進しよう。</h2>
+    <p>SES・Web制作・システム開発の3事業を展開中。挑戦するあなたの一歩を、Medical Vantageは全力で後押しします。</p>
+  </div>
+</section>
+
+<!-- ===== About ===== -->
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="reveal">
+      <p class="sec-label">About Us</p>
+      <p class="about-lead">IT技術で、<br><span class="grad-text">日本を前進させる。</span></p>
+      <p>私たちは2024年に渋谷で生まれた、生まれたばかりのITカンパニーです。だからこそ、決めるのも、挑むのも速い。一人ひとりの挑戦がそのまま会社の成長になる。そんなフェーズで、未来を一緒につくる仲間を募集しています。</p>
+    </div>
+    <div class="reveal">
+      <table class="info-table">
+        <tr><th>会社名</th><td>株式会社Medical Vantage</td></tr>
+        <tr><th>所在地</th><td>東京都渋谷区道玄坂1-10-8<br>渋谷道玄坂東急ビル2F</td></tr>
+        <tr><th>設立</th><td>2024年11月27日</td></tr>
+        <tr><th>事業内容</th><td>システム開発事業 / Web制作事業 / SES事業</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Recruit ===== -->
+<section class="recruit" id="recruit">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="sec-label">Recruit</p>
+      <h2 class="sec-title">採用情報</h2>
+    </div>
+    <div class="jobs">
+      <div class="job reveal">
+        <h3>ITエンジニア</h3>
+        <div class="pay">月給25万円〜<span> ／ 経験・能力考慮</span></div>
+        <ul>
+          <li>未経験・第二新卒歓迎</li>
+          <li>研修・資格取得サポートあり</li>
+          <li>勤務地：東京都内（渋谷オフィス）</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <h3>ITエンジニア（経験者）</h3>
+        <div class="pay">月給30万円〜<span> ／ 経験・スキル考慮</span></div>
+        <ul>
+          <li>開発・SES経験者優遇</li>
+          <li>スキルに応じた案件・キャリアパス</li>
+          <li>勤務地：東京都内（渋谷オフィス）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="benefits reveal">
+      <h3>福利厚生・働く環境</h3>
+      <div class="b-grid">
+        <div>各種社会保険完備</div>
+        <div>交通費支給</div>
+        <div>資格取得支援制度</div>
+        <div>研修・スキルアップ支援</div>
+        <div>定期キャリア面談</div>
+        <div>服装自由</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="sec-label">FAQ</p>
+      <h2 class="sec-title">よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal"><div class="faq-q">未経験でも応募できますか？<span class="mark">+</span></div><div class="faq-a"><p>はい、歓迎しています。実務経験は問いません。研修や資格取得サポートを通じて、基礎からエンジニアとして成長できる環境を用意しています。</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">設立まもない会社ですが、安定性は大丈夫ですか？<span class="mark">+</span></div><div class="faq-a"><p>ご安心ください。主要メンバーは大手SES会社での豊富な経験を持ち、独立開業時からクライアントとのネットワークが充実しています。設立間もないながらも、安定した案件基盤を持っています。</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">どんな技術・案件に関われますか？<span class="mark">+</span></div><div class="faq-a"><p>AI・機械学習、Web／アプリ開発、DX支援など幅広い領域があります。SES事業では、ご本人のスキルや志向に合わせて案件をご提案します。</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">研修制度はありますか？<span class="mark">+</span></div><div class="faq-a"><p>あります。基礎学習から実務に近い演習まで、段階的にスキルを身につけられます。資格取得のサポート制度も整えています。</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">勤務地はどこになりますか？<span class="mark">+</span></div><div class="faq-a"><p>東京都内（渋谷オフィス）が拠点です。SES案件の場合は、プロジェクトに応じて就業先が決まります。</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">選考の流れを教えてください。<span class="mark">+</span></div><div class="faq-a"><p>書類選考 → 面接（1〜2回）→ 内定 という流れが基本です。まずは下記の採用お問い合わせより、お気軽にご連絡ください。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <h3>採用お問い合わせ</h3>
+      <p>ご応募・ご質問は、下記メールアドレスまでお気軽にご連絡ください。<br>担当者より折り返しご連絡いたします。</p>
+      <a class="mail-btn" href="mailto:saiyo@medicalvantage.jp">saiyo@medicalvantage.jp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Medical Vantage<span>株式会社Medical Vantage</span></div>
+      </div>
+      <div class="foot-info">
+        〒150-0043 東京都渋谷区道玄坂1-10-8 渋谷道玄坂東急ビル2F<br>
+        設立：2024年11月27日<br>
+        事業内容：システム開発事業 / Web制作事業 / SES事業<br>
+        採用お問い合わせ：saiyo@medicalvantage.jp
+      </div>
+    </div>
+    <div class="copy">© 2024 Medical Vantage Inc. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var item=q.parentElement;
+      var a=item.querySelector('.faq-a');
+      var open=item.classList.toggle('open');
+      a.style.maxHeight=open?a.scrollHeight+'px':null;
+    });
+  });
+  // Scroll reveal
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  // Nav bg on scroll
+  window.addEventListener('scroll',function(){
+    document.querySelector('header').style.background = window.scrollY>40 ? 'rgba(36,56,110,0.92)' : 'rgba(36,56,110,0.70)';
+  });
+</script>
+</body>
+</html>
